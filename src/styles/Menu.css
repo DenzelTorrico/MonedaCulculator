@@ -1,0 +1,10 @@
+#menu{
+    background-color: white;
+    padding: 15px;
+    box-shadow: 2px 2px 70px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+}
+#logo{
+    width: 70px;
+}
