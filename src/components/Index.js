@@ -5,7 +5,7 @@ import ApiService from '../services/ApiService';
 
 function Index(){
     const [data, setData] = useState(null);
-  const [money, setMoney] = useState(null);
+  const [money, setMoney] = useState(1);
   const [money2, setMoney2] = useState(null);
   const [cambio, setCambio] = useState(null);
   const [cambio2, setCambio2] = useState(null);
@@ -22,9 +22,10 @@ function Index(){
   const fecthData2 = async () => {
         try {
             const response = await ApiService.ChangeMoney(cambio,cambio2,money)
+            setMoney2(response.conversion_result)
             console.log(response)
         } catch (error) {
-            console.log("ERROR AL OBTENER DATA DE LA API", error);
+            console.log("ERROR AL OBTENER DATA DE LA API PARA CONVERTIR", error);
 
         }
   }
@@ -34,15 +35,22 @@ function Index(){
     console.log(money2)
   }
   const viewConverter = (event)=>{
-      setCambio(event.target.value)
+      setCambio(event.target.value.substring(0,3))
+  }
+  const viewConverter2 = (event)=>{
+      setCambio2(event.target.value.substring(0,3))
   }
   
+  const Converter = (event)=>{
+        setMoney(event.target.value)
+
+    }
 
   useEffect(()=>{
     fetchData()
-    console.log()
+    fecthData2()
 
-  },[cambio])
+  },[cambio,money])
 
     return(
          
@@ -65,11 +73,11 @@ function Index(){
       ))}
     </select>
   )}
-    <input type="number" value={money} className='form-control' placeholder='$'/>
+    <input type="number" onChange={Converter} value={money} className='form-control' placeholder='$'/>
 </div>
 <div id='second'>
 {data && (
-    <select  className='form-select'>
+    <select onChange={viewConverter2} className='form-select'>
       {data.supported_codes.map((currency, index) => (
         <option key={index}>
           {currency.map((item, subIndex) => (
@@ -81,6 +89,7 @@ function Index(){
   )}
     <input type="number" onChange={viewvalue} value={money2} className='form-control' placeholder='$'/>
 </div>
+            
 </div>
 </div>
             <Footer/>
