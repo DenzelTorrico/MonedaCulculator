@@ -11,7 +11,7 @@
   margin: 20px auto;
 }
 #body{
-  border: 1px solid rgb(121, 117, 117);
+  border: 2px dashed rgb(243, 238, 238);
   padding: 15px;
   display: flex;
   flex-direction: row;
@@ -23,6 +23,10 @@
   padding: 10px;
 }
 #content{
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
   background-color: azure;
+}
+#content-down{
+
 }
