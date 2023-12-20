@@ -8,8 +8,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./styles/Menu.css";
+import "./styles/Login.css";
 import Index from './components/Index';
 import Pruebas from './views/Pruebas';
+import Login from './views/auth/Login';
 
 const router = createBrowserRouter(
   [
@@ -20,6 +22,9 @@ const router = createBrowserRouter(
     {
       path:"/testing",
       element:<Pruebas/>,
+    },{
+      path:"/login",
+      element:<Login/>
     }
   ]
 );
