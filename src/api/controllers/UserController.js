@@ -8,7 +8,6 @@ exports.response = (req, res, next) => {
 
     return res.send("success")
 }
-exports.login = (req, res, next) => {
-    
-    return res.send(req.body)
-  }
+exports.login = async(req, res, next) => {      
+        return res.json(req.body);
+  };
